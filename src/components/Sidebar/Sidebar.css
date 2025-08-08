@@ -22,3 +22,20 @@
 .sidebar-toggle {
   z-index: 1040;
 }
+.sidebar .nav-link.active {
+  background: #fff;
+  border-radius: 5px;
+  color: #212529 !important;
+}
+.sidebar .nav-link:hover {
+  border-radius: 5px;
+  color: #ffff !important;
+}
+.sidebar .nav-link{
+  color: #dddd;
+}
+.sidebar .nav-link.active:hover {
+  background: #f5f5f5; 
+  color: #212529 !important;
+}
+

@@ -9,3 +9,6 @@
     font-size: 14px;
   }
 }
+input.form-control{
+  width: 100%;
+}

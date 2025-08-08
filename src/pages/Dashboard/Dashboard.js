@@ -1,21 +1,31 @@
 import React from 'react';
 import './Dashboard.css';
-
+import { useState } from 'react';
 const dummyBills = [
-  { id: 1, customer: 'John Doe', amount: 250 },
-  { id: 2, customer: 'Jane Smith', amount: 430 },
-  { id: 3, customer: 'Alice', amount: 190 },
-  { id: 4, customer: 'Bob', amount: 360 },
-  { id: 5, customer: 'Eve', amount: 220 },
-  { id: 6, customer: 'Tom', amount: 310 },
-  { id: 7, customer: 'Sara', amount: 150 },
-  { id: 8, customer: 'Mike', amount: 490 },
-  { id: 9, customer: 'Ana', amount: 210 },
-  { id: 10, customer: 'Leo', amount: 350 }
+  { id: 'INV001', customer: 'Arun', amount: 1200 },
+  { id: 'INV002', customer: 'Kumar', amount: 550 },
+  { id: 'INV003', customer: 'Mike Johnson', amount: 3000 },
+  { id: 'INV004', customer: 'Sara Lee', amount: 700 },
+  { id: 'INV005', customer: 'David Brown', amount: 1500 },
+   { id: 'INV006', customer: 'John Doe', amount: 1200 },
 ];
 
 const Dashboard = () => {
   const totalProfit = dummyBills.reduce((sum, b) => sum + b.amount, 0);
+
+   const [search, setSearch] = useState('');
+  const [filter, setFilter] = useState('all');
+
+  const filteredBills = dummyBills.filter((bill) => {
+    const matchesSearch = bill.customer.toLowerCase().includes(search.toLowerCase());
+    const matchesFilter =
+      filter === 'all' ||
+      (filter === 'below1000' && bill.amount < 1000) ||
+      (filter === '1000to2000' && bill.amount >= 1000 && bill.amount <= 2000) ||
+      (filter === 'above2000' && bill.amount > 2000);
+
+    return matchesSearch && matchesFilter;
+  });
 
   return (
     <div className="dashboard-container p-4">
@@ -33,26 +43,61 @@ const Dashboard = () => {
       </div>
 
       <h5 className="mb-3">Recent Bills</h5>
+       <div className="card  rounded-4 p-4">
+      <div className="d-flex flex-column flex-md-row justify-content-end align-items-md-center mb-4 gap-3">
+        <div className="d-flex gap-2 flex-wrap flex-lg-nowrap">
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by customer"
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+          />
+          <select
+            className="form-select"
+            value={filter}
+            onChange={(e) => setFilter(e.target.value)}
+            style={{ border: '1px solid #000' }}
+          >
+            <option value="all">All Amounts</option>
+            <option value="below1000">Below ₹1000</option>
+            <option value="1000to2000">₹1000 - ₹2000</option>
+            <option value="above2000">Above ₹2000</option>
+          </select>
+        </div>
+      </div>
+
       <div className="table-responsive">
-        <table className="table table-bordered table-striped">
+        <table className="table table-bordered table-striped align-middle text-center">
           <thead className="table-light">
             <tr>
-              <th>#</th>
+              <th>S.No</th>
+              <th>Invoice No.</th>
               <th>Customer</th>
-              <th>Amount</th>
+              <th>Bill Amount</th>
             </tr>
           </thead>
           <tbody>
-            {dummyBills.map((bill, index) => (
-              <tr key={bill.id}>
-                <td>{index + 1}</td>
-                <td>{bill.customer}</td>
-                <td>₹ {bill.amount}</td>
+            {filteredBills.length > 0 ? (
+              filteredBills.map((bill, index) => (
+                <tr key={bill.id}>
+                  <td>{index + 1}</td>
+                  <td>{bill.id}</td>
+                  <td>{bill.customer}</td>
+                  <td>₹ {bill.amount.toLocaleString()}</td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td colSpan="4" className="text-muted">
+                  No bills found
+                </td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
+    </div>
     </div>
   );
 };

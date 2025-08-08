@@ -9,3 +9,19 @@
     margin-left: 0;
   }
 }
+
+.card {
+  background-color: #ffffff;
+}
+
+input.form-control,
+select.form-select {
+  min-width: 200px;
+}
+
+@media (max-width: 576px) {
+  input.form-control,
+  select.form-select {
+    width: 100%;
+  }
+}
