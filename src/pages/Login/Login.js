@@ -18,7 +18,7 @@ const Login = () => {
       <div className="login-card shadow rounded-4 p-4 p-md-5 bg-white">
         <div className="text-center mb-4">
           <h2 className="app-logo mb-1">Billing</h2>
-          <p className="text-muted">Sign in to continue</p>
+          <p className="text-muted">Sign in to continue..</p>
         </div>
         <form onSubmit={handleSubmit}> 
           <div className="form-floating mb-3">
