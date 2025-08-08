@@ -1,0 +1,11 @@
+/* Margin to offset fixed sidebar */
+.dashboard-container {
+  padding-top: 1rem;
+}
+
+/* Remove left margin on mobile */
+@media (max-width: 767.98px) {
+  .dashboard-container {
+    margin-left: 0;
+  }
+}

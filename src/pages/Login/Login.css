@@ -1,0 +1,44 @@
+/* Background styling */
+.login-bg {
+  background: linear-gradient(135deg, #f5f7fa, #c3cfe2);
+  padding: 1rem;
+}
+
+/* Login card with responsiveness */
+.login-card {
+  width: 100%;
+  max-width: 420px;
+  background-color: #fff;
+  border-radius: 1.5rem;
+}
+
+/* Logo text */
+.app-logo {
+  font-weight: 700;
+  color: #0d6efd;
+}
+
+/* Floating password icon */
+.password-toggle-icon {
+  position: absolute;
+  top: 50%;
+  right: 1rem;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #6c757d;
+}
+
+/* Make form controls look modern */
+.form-control {
+  border-radius: 0.5rem;
+}
+
+/* Form floating label fix */
+.form-floating > label {
+  padding-left: 1rem;
+}
+
+/* Adjust input padding for eye icon */
+#password {
+  padding-right: 2.75rem;
+}

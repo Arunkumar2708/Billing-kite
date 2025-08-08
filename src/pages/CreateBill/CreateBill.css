@@ -1,0 +1,11 @@
+.suggestion-list {
+  z-index: 10;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+@media (max-width: 767.98px) {
+  .table {
+    font-size: 14px;
+  }
+}

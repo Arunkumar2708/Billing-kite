@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
+import { BrowserRouter as Router, useLocation } from 'react-router-dom';
+import Sidebar from './components/Sidebar/Sidebar';
+import AppRoutes from './routes/AppRoutes';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+function Layout() {
+  const location = useLocation();
+  const hideSidebar = location.pathname === '/';
+
+  return (
+    <div>
+      {!hideSidebar && <Sidebar />}
+      <main className={hideSidebar ? '' : 'main-content'}>
+        <AppRoutes />
+      </main>
+    </div>
+  );
+}
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Layout />
+    </Router>
   );
 }
 

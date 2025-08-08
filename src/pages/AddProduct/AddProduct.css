@@ -1,0 +1,25 @@
+
+
+@media (max-width: 767.98px) {
+  .add-product-page {
+    margin-left: 0;
+    padding: 1rem;
+    
+  }
+}
+
+.product-card {
+  border-radius: 0.75rem;
+  transition: transform 0.2s ease;
+  background-color: #ffffff;
+}
+
+.product-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.06);
+}
+
+/* Ensure modal covers full screen on mobile */
+.modal {
+  background-color: rgba(0, 0, 0, 0.4);
+}
