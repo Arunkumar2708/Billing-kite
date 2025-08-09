@@ -57,7 +57,7 @@ const Sidebar = () => {
     <>
       {/* Mobile Menu Button */}
       <div className="sidebar-toggle d-md-none p-2 bg-white shadow-sm sticky-top">
-        <button className="btn btn-outline-primary" onClick={handleToggle}>
+        <button className="btn " onClick={handleToggle}>
           <Menu size={20} />
         </button>
       </div>
@@ -111,7 +111,9 @@ const Sidebar = () => {
             Logout
           </button>
         </div>
-        {/* Confirmation Dialog */}
+       
+      </div>
+       {/* Confirmation Dialog */}
         {showConfirm && (
           <div className="position-fixed top-0 start-0 w-100 h-100 d-flex align-items-center justify-content-center" style={{background: 'rgba(0,0,0,0.4)', zIndex: 2000}}>
             <div className="bg-white p-4 rounded shadow text-center" style={{minWidth: 250}}>
@@ -121,7 +123,6 @@ const Sidebar = () => {
             </div>
           </div>
         )}
-      </div>
     </>
   );
 };
